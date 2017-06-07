@@ -1,7 +1,7 @@
 ---
 layout: lesson
 root: .
-lastupdated: March 21, 2016
+lastupdated: June 7, 2017
 contributors: ["Sarah Supp", "John Blischak","Gavin Simpson","Tracy Teal","Greg Wilson","Diego Barneche"," Stephen Turner","Francois Michonneau"]
 maintainers: ["Francois Michonneau", "Auriel Fournier"]
 domain: Ecology
@@ -14,9 +14,9 @@ status: Teaching
 # Note
 
 This particular set of lessons has revisions by
-[Karl Broman](http://kbroman.org) for a
-[Data Carpentry workshop](http://uw-madison-aci.github.io/2016-06-01-uwmadison/)
-at UW-Madison on 23-24 August 2016. The official Data Carpentry R-Ecology
+[Karl Broman](http://kbroman.org), [Brian Yandell](https://github.com/byandell) and [Fred Boehm](https://github.com/fboehm) for a
+[Data Carpentry workshop](http://uw-madison-aci.github.io/2017-06-19-uwmadison/)
+at UW-Madison on 19-20 June 2017. The official Data Carpentry R-Ecology
 lessons are at <http://www.datacarpentry.org/R-ecology-lesson/>.
 
 # Data Carpentry {{ page.topic }} for {{ page.domain }}
