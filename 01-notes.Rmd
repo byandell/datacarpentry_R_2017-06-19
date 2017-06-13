@@ -11,6 +11,10 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 
 ## R and RStudio
 
+**Slow pace -- check audience**
+
+**Practice display switching on projector**
+
 ### R
 
 - Free and open-source general statistical language
@@ -70,15 +74,15 @@ log10(4)
 - File → New Project → Existing directory → Browse for folder
   → Create project
 - Use `DataCarpentry` or whatever working directory name you use
+- Explain "working directory"; show `getwd()`
+- See sample layout (with different names than we use):
+
+![](http://www.datacarpentry.org/R-ecology-lesson/img/working-directory-structure.png)
 
 ### Create an R script
 
 - File → New File → R script
 - Save it in the `Code/` directory, `data-carpentry-script.R`
-- See sample layout (with different names than we use):
-
-![](http://www.datacarpentry.org/R-ecology-lesson/img/working-directory-structure.png)
-
 
 ## Typing into the script and pasting to console
 
@@ -134,6 +138,13 @@ round(sqrt_age, 2)
     + later arguments with names
 - Names can be found using help methods from earlier
 
+```{r seq_w_named_args}
+seq(5)
+seq(2,5)
+seq(from=2, to=5)
+seq(by=2, length.out = 10)
+```
+
 ```{r round_w_named_args}
 round(x = sqrt_age, digits = 2)
 round(digits = 2,x = sqrt_age)
@@ -160,6 +171,7 @@ x <- 80
 surveys <- read.csv("http://kbroman.org/datacarp/portal_data_joined.csv")
 ```
 
+`surveys` is a rectangle, or table, of data. We call it a `data frame`.
 
 ### Objects in workspace
 
