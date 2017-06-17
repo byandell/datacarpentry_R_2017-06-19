@@ -9,11 +9,17 @@ minutes: 45
 knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 ```
 
+## Setup
+
+- Practice display switching on projector
+- Slow pace -- check audience
+    + describe each step (what mouse is doing, typing, etc.)
+- Bring up web pages
+    + [notes](file:///Users/brianyandell/Documents/Research/carpentry/datacarpentry_R_2017-06-19/01-notes.html)
+    + [challenges](file:///Users/brianyandell/Documents/Research/carpentry/datacarpentry_R_2017-06-19/challenge_slides.html
+    + [datacarpentry page](https://uw-madison-aci.github.io/2017-06-19-uwmadison-dc/) | [R page](http://kbroman.org/datacarpentry_R_2017-01-10/)
+
 ## R and RStudio
-
-**Slow pace -- check audience**
-
-**Practice display switching on projector**
 
 ### R
 
@@ -58,10 +64,15 @@ log10(4)
 
 - Explain that `log` is a function with two arguments.
 
-## Getting help
+## Getting help for commands
+
+`log` is a function, or command, that operates on data. 
+Each function has a help page.
+Notice the parentheses after the function name used to call it.
 
 - Pause for a moment after typing `log`
 - Type `?log`
+- Visit pane 3, Help tab, type `log`
 
 ## Value of using scripts
 
@@ -125,12 +136,11 @@ round(sqrt_age, 2)
 - can't start with a number
 - there are some names not allowed (`if`, `for`, `else`)
 - other names you can but shouldn't use (`c`, `data`, `mean`)
-- Can use `.`, but best not to
-
-- Reminder: The last `round()` call had 2 arguments; order matters.
+- Can use `.`, but best not to: use `under_score` or `CamelStyle`
 
 ### Named arguments
 
+- Reminder: The last `round()` call had 2 arguments; order matters.
 - Named arguments useful for commands with many arguments
     + order can get confusing
     + names allow you to switch order around
@@ -145,6 +155,8 @@ seq(from=2, to=5)
 seq(by=2, length.out = 10)
 ```
 
+Skip the next set:
+
 ```{r round_w_named_args}
 round(x = sqrt_age, digits = 2)
 round(digits = 2,x = sqrt_age)
@@ -153,7 +165,7 @@ round(sqrt_age, digits = 2)
 
 - We may occasionally used named arguments in these lessons
 
-### Challenge
+### Challenge (go to [Challenge page](file:///Users/brianyandell/Documents/Research/carpentry/datacarpentry_R_2017-06-19/challenge_slides.html)
 
 What is the value of `y` after doing the following?
 
@@ -163,7 +175,9 @@ y <- x * 2
 x <- 80
 ```
 
-- Objects don't get linked together
+<!-- end challenge -->
+
+- Challenge lesson: objects don't get linked together
 
 ## Plunge into Survey Data
 
@@ -172,11 +186,12 @@ surveys <- read.csv("http://kbroman.org/datacarp/portal_data_joined.csv")
 ```
 
 `surveys` is a rectangle, or table, of data. We call it a `data frame`.
+Think of it like an internal copy of a spreadsheet.
 
 ### Objects in workspace
 
 - `ls()`
-- Environment panel (`Ctrl-Shift-4`)
+- Environment panel (`Ctrl-Shift-4`, Environment tab)
 
 ## Data frames
 
@@ -221,6 +236,9 @@ summary(surveys)
 
 ## Inspecting data frames
 
+Rather than introduce all of these, tell them the lesson has other commands that can be used to inspect data frames.
+Instead, show `surveys` in the **Environment** in pane 4.
+
 - `dim()`
 - `nrow()`
 - `ncol()`
@@ -231,6 +249,9 @@ summary(surveys)
 
 ## Download and then read the data
 
+**Warning: May not have `CleanData` folder. Do wrong first.
+
+Sometimes it is better to work from a local copy.
 We first download the file:
 
 ```{r download_file, eval=FALSE}
@@ -238,7 +259,7 @@ download.file("http://kbroman.org/datacarp/portal_data_joined.csv",
               "CleanData/portal_data_joined.csv")
 ```
 
-We then read them into R:
+We then read it into R:
 
 ```{r load_from_local_file, eval=FALSE}
 surveys <- read.csv("CleanData/portal_data_joined.csv")
@@ -290,7 +311,6 @@ sex[1]
 sex[10000]
 ```
 
-
 ### Slices
 
 You can pull out larger slices from the vector by providing vectors of
@@ -312,7 +332,8 @@ First, the operator `:` gives you a sequence of consecutive values.
 5:8
 ```
 
-`seq` is more flexible.
+`seq` is more flexible. We looked at this briefly earlier.
+May skip details here.
 
 ```{r}
 seq(1, 10, by=2)
@@ -348,31 +369,26 @@ starting at row 10 (10, 20, 30, ...)
 ## Missing data
 
 Missing data value, `NA`. Different from character string `"NA"`.
+Look at `hindfoot_length` in the **Environment** of pane 4 and notice the `NA` values. 
 
-```{r create_vec_with_missing}
-heights <- c(2, 4, 4, NA, 6)
+```{r}
+mean(surveys$hindfoot_length)
 ```
 
-Many functions will return `NA` if there is any missing data. Need to
-use `na.rm=TRUE` to strip off missing values.
 
-```{r na_rm}
-mean(heights)
-max(heights)
-mean(heights, na.rm = TRUE)
-max(heights, na.rm = TRUE)
-```
+### Challenge
+
+Use the help page for the `mean` command to figure out how to get the mean of the non-missing values.
+
+Now find the `min` and `max` of `hindfoot_length`. Still have to watch out for `NA` values.
+
+Hint: Need to `remove` (or strip out) the `NA` values somehow.
+
+<!-- end challenge -->
+
 
 If your data include missing values, you may want to become familiar with the
 functions `is.na()` and `na.omit()`.
-
-
-```{r extract_non_missing}
-## Extract those elements which are not missing values.
-heights[!is.na(heights)]
-## shortcut to that
-na.omit(heights)
-```
 
 
 ### Treating blanks as missing
@@ -386,6 +402,11 @@ universal missing value code.
 surveys_noblanks <- read.csv("CleanData/portal_data_joined.csv", na.strings="")
 ```
 
+### Challenge
+
+Compare `sex` in `surveys` and `surveys_noblanks` using the **Environment** tab of page 4. What do you notice?
+
+<!-- end challenge -->
 
 
 ## Factors
@@ -400,7 +421,11 @@ actually integers under the hood, and you need to be careful when treating them
 like strings.
 
 Once created, factors can only contain a pre-defined set of values, known as
-*levels*. By default, R always sorts *levels* in alphabetical order. For
+*levels*. By default, R always sorts *levels* in alphabetical order. 
+
+**Note: Might skip rest of this in favor of looking at Environment in pane 4.
+
+For
 instance, if you use `factor()` to create a factor with 2 levels:
 
 ```{r create_sex_vector, purl=TRUE}
@@ -492,7 +517,19 @@ previously factor columns are now `chr`.
 str(surveys_chr)
 ```
 
+### Challenge
+
+Look at the **Environment** in pane 4 for `surveys_chr` compared to `surveys`. Notice how `species`, `taxa` and some other variables change from `Factor` to `chr`. Which do you prefer? Why?
+
+<!-- end challenge -->
+
+**Note:** The package `readr` has a command `read_chr`, which reads characters as characters and treats blanks as missing values.
+
+```{r}
+library(readr)
+surveys_r <- read_csv("http://kbroman.org/datacarp/portal_data_joined.csv")
+```
 
 
 
-<br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+

@@ -36,6 +36,23 @@ starting at row 10 (10, 20, 30, ...)
 
 ---
 
+# Challenge 3.2
+
+We found `mean(surveys$hindfoot_length)` yields `NA`.
+Use the help page for the `mean` command to figure out how to get the mean of the non-missing values.
+
+Now find the `min` and `max` of `hindfoot_length`. Still have to watch out for `NA` values.
+
+Hint: Need to `remove` (or strip out) the `NA` values somehow.
+
+---
+
+# Challenge 3.3
+
+Compare `sex` in `surveys` and `surveys_noblanks` using the **Environment** tab of page 4. What do you notice?
+
+---
+
 # Challenge 4
 
 
@@ -55,6 +72,11 @@ of first?
 
 ---
 
+# Challenge 4.2
+
+Look at the **Environment** in pane 4 for `surveys_chr` compared to `surveys`. Notice how `species`, `taxa` and some other variables change from `Factor` to `chr`. Which do you prefer? Why?
+
+---
 # Challenge 5
 
 

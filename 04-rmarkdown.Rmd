@@ -22,46 +22,30 @@ source("setup.R")
 > * Other output formats
 
 
+### Rmarkdown basic idea
+
+- mingle code and text in document
+- develop ideas over time with notes to self in rough document
+- later format a refined document to share with others
+
 ### Data analysis reports
 
 Data analysts tend to write a lot of reports, describing their
 analyses and results, for their collaborators or to document their
-work for future reference.
+work for future (self) reference.
 
-When I was first starting out, I'd write an R script with all of my
-work, and would just send an email to my collaborator, describing the
-results and attaching various graphs. In discussing the results, there
-would often be confusion about which graph was which.
-
-I moved to writing formal reports, with Word or LaTeX, but I'd have to
-spend a lot of time getting the figures to look right. Mostly, the
-concern is about page breaks.
-
-Everything is easier now that I create a web page (as an html
-file). It can be one long stream, so I can use tall figures that
-wouldn't ordinary fit on one page. Scrolling is your friend.
-
-
-### Literate programming
-
-Ideally, such analysis reports are _reproducible_ documents: If an
-error is discovered, or if some additional subjects are added to the
-data, you can just re-compile the report and get the new or corrected
-results (versus having to reconstruct figures, paste them into
-a Word document, and further hand-edit various detailed results).
-
-The key tool for R is [knitr](http://yihui.name/knitr/), which allows
-you to create a document that is a mixture of text and some chunks of
-code. When the document is processed by knitr, chunks of R code will
-be executed, and graphs or other results inserted.
-
-This sort of idea has been called "literate programming".
-
-knitr allows you to mix basically any sort of text with any sort of
-code, but we recommend that you use R Markdown, which mixes Markdown
-with R. Markdown is a light-weight mark-up language for creating web
-pages.
-
+- old way
+    + write R script with code and comments
+    + email collaborator with separate result and graph files
+    + confusion over which graph was which
+- middle way
+    + formal reports (Word or LaTeX)
+    + much time getting figures to look right (page breaks)
+    + often revert back to old way to save time
+- new way
+    + Rmarkdown as HTML web page (one file)
+    + allows tall figures and scrolling
+    + can easily output as PDF or WORD if desired later
 
 ### Creating an R Markdown file
 
@@ -117,6 +101,8 @@ html code.
 
 For now, let's delete all of the stuff that's there and write a bit of
 markdown.
+
+See **Help → Markdown Quick Reference** for help.
 
 You make things **bold** using two asterisks, like this: `**bold**`,
 and you make things _italics_ by using underscores, like this:
@@ -187,6 +173,26 @@ text, and an itemized list).
 
 <!-- end challenge -->
 
+### Literate programming
+
+Ideally, analysis reports are _reproducible_ documents: If an
+error is discovered, or if some additional subjects are added to the
+data, you can just re-compile the report and get the new or corrected
+results (versus having to reconstruct figures, paste them into
+a Word document, and further hand-edit various detailed results).
+
+The key tool for R is [knitr](http://yihui.name/knitr/), which allows
+you to create a document that is a mixture of text and some chunks of
+code. When the document is processed by knitr, chunks of R code will
+be executed, and graphs or other results inserted.
+
+This sort of idea has been called "literate programming".
+
+knitr allows you to mix basically any sort of text with any sort of
+code, but we recommend that you use R Markdown, which mixes Markdown
+with R. Markdown is a light-weight mark-up language for creating web
+pages.
+
 ### A bit more Markdown
 
 You can make a hyperlink like this:
@@ -205,8 +211,6 @@ you can use `$ $` and `$$ $$` to insert math equations, like
 ```
 $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 ```
-
-
 
 ### R code chunks
 
